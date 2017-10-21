@@ -15,13 +15,13 @@ import java.util.regex.Pattern;
  */
 public class Card {
 
-    Rank rank;
-    Suit suit;
+    private Rank rank;
+    private Suit suit;
 
     //This looks for a number or A, J, Q or K as the first group (the rank)
     //Then it looks for (S or C or H or D) as the second group (the suit)
-    final static String regex = "(\\d+|A|J|Q|K)(S|C|H|D)$";
-    final static Pattern pattern = Pattern.compile(regex);
+    private final static String regex = "(\\d+|A|J|Q|K)([SCHD])$";
+    private final static Pattern pattern = Pattern.compile(regex);
 
     public Card(Rank rank, Suit suit) {
         this.rank = rank;
@@ -53,7 +53,6 @@ public class Card {
         }
 
     }
-
 
     protected static Card buildFromRankCodeAndSuitCode(String rankCode, String suitCode) {
         return new Card(Rank.fromShortCode(rankCode), Suit.fromShortCode(suitCode));

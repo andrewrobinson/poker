@@ -2,12 +2,31 @@ package com.inclusivity.poker;
 
 import org.junit.Test;
 
+import java.util.List;
+
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by andrew on 2017/10/21.
  */
 public class TestHand {
+
+    @Test
+    public void testGetListOfCards() {
+
+        List<Card> listOfCards = Hand.getListOfCards("AS, 10C, 10H, 3D, 3S");
+
+        assertEquals(5, listOfCards.size());
+
+        assertTrue(TestCard.aceOfSpaces.equals(listOfCards.get(0)));
+        assertTrue(TestCard.tenOfClubs.equals(listOfCards.get(1)));
+        assertTrue(TestCard.tenOfHearts.equals(listOfCards.get(2)));
+        assertTrue(TestCard.threeOfDiamonds.equals(listOfCards.get(3)));
+        assertTrue(TestCard.threeOfSpades.equals(listOfCards.get(4)));
+
+
+    }
 
     @Test
     public void testGetBestHand() {

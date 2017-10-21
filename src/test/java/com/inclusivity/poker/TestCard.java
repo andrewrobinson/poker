@@ -8,12 +8,12 @@ import static org.junit.Assert.assertNull;
 
 public class TestCard {
 
-    Card aceOfSpaces = new Card(Rank.ACE, Suit.SPADES);
-    Card tenOfClubs = new Card(Rank.TEN, Suit.CLUBS);
-    Card tenOfHearts = new Card(Rank.TEN, Suit.HEARTS);
-    Card threeOfDiamonds = new Card(Rank.THREE, Suit.DIAMONDS);
-    Card threeOfSpades = new Card(Rank.THREE, Suit.SPADES);
-    Card jackOfHearts = new Card(Rank.JACK, Suit.HEARTS);
+    protected static Card aceOfSpaces = new Card(Rank.ACE, Suit.SPADES);
+    protected static Card tenOfClubs = new Card(Rank.TEN, Suit.CLUBS);
+    protected static Card tenOfHearts = new Card(Rank.TEN, Suit.HEARTS);
+    protected static Card threeOfDiamonds = new Card(Rank.THREE, Suit.DIAMONDS);
+    protected static Card threeOfSpades = new Card(Rank.THREE, Suit.SPADES);
+    protected static Card jackOfHearts = new Card(Rank.JACK, Suit.HEARTS);
 
     @Test
     public void testBuildCardFromShortCode() {
