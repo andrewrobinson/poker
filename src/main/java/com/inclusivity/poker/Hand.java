@@ -1,11 +1,14 @@
 package com.inclusivity.poker;
 
-/**
- * Created by andrew on 2017/10/21.
- */
 public class Hand {
 
-    public static String getBestHand(String hand) {
+    public static String getBestHand(String cards) {
+
+        String[] cardSymbols = cards.split(",");
+        if (cardSymbols.length != 5) {
+            throw new RuntimeException("symbols for 5 cards must be supplied.");
+        }
+
         return "Two Pair";
 
     }
