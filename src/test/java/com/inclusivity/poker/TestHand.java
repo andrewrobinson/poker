@@ -7,9 +7,6 @@ import java.util.List;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by andrew on 2017/10/21.
- */
 public class TestHand {
 
     @Test
