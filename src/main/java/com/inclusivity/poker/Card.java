@@ -20,7 +20,7 @@ public class Card {
 
     //This looks for a number or A, J, Q or K as the first group (the rank)
     //Then it looks for (S or C or H or D) as the second group (the suit)
-    final static String regex = "(\\d+|A|J|Q|K)(S|C|H|D)(.*)";
+    final static String regex = "(\\d+|A|J|Q|K)(S|C|H|D)$";
     final static Pattern pattern = Pattern.compile(regex);
 
     public Card(Rank rank, Suit suit) {
@@ -38,14 +38,7 @@ public class Card {
 
         if (matcher.find()) {
 
-            if (matcher.groupCount() == 3) {
-
-                //The 3rd group should be empty
-                //TODO - probabl a more regex way of ensuring nothing more is at the end
-                if (!matcher.group(3).isEmpty()) {
-                    //eg if someone passes JH1234 instead of just JH
-                    return null;
-                }
+            if (matcher.groupCount() == 2) {
 
                 String rankCode = matcher.group(1);
                 String suitCode = matcher.group(2);
@@ -67,7 +60,7 @@ public class Card {
     }
 
     public boolean equals(Card otherCard) {
-        return (this.rank.equals(otherCard.rank) && this.suit.equals(otherCard.suit));
+        return (otherCard != null && this.rank.equals(otherCard.rank) && this.suit.equals(otherCard.suit));
     }
 
 }
