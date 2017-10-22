@@ -16,8 +16,6 @@ import static org.junit.Assert.assertFalse;
 public class TestSuitAnalyser {
 
 
-
-
     @Test
     public void testHasAllCardsOfTheSameSuit() {
 
@@ -53,7 +51,7 @@ public class TestSuitAnalyser {
     }
 
     @Test
-    public void testGetCountsPerSuit() {
+    public void testBuildUpSuitCountsPerSuitViaConstructor() {
 
         List<Card> listOfCards = Hand.getListOfCards("AS, 10C, 10H, 3D, 3S");
         assertEquals(5, listOfCards.size());
@@ -78,7 +76,6 @@ public class TestSuitAnalyser {
         assertEquals(1, (int) countsPerSuit.get(Suit.CLUBS));
         assertEquals(1, (int) countsPerSuit.get(Suit.HEARTS));
         assertEquals(null,  countsPerSuit.get(Suit.DIAMONDS));
-
 
     }
 }

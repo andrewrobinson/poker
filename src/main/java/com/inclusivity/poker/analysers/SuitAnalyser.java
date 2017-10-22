@@ -23,12 +23,11 @@ public class SuitAnalyser {
 
 
     public SuitAnalyser(List<Card> listOfCards) {
+
         this.listOfCards = listOfCards;
         buildUpSuitCountsPerSuit(listOfCards);
 
-
     }
-
 
     /**
      *
@@ -53,11 +52,15 @@ public class SuitAnalyser {
             for (Suit suit: countsPerSuit.keySet()) {
                 int numberOfSameSuit = countsPerSuit.get(suit);
 
-                if (numberOfSameSuit == 5) {
-                    return true;
-                } else {
-                    throw new RuntimeException("This should never happen! numberOfSameSuit:"+numberOfSameSuit+" should be 5 when only one Suit found in counts for suit:"+suit);
-                }
+                assert(numberOfSameSuit == 5);
+                return true;
+
+                //or if not using assert
+//                if (numberOfSameSuit == 5) {
+//                    return true;
+//                } else {
+//                    throw new RuntimeException("This should never happen! numberOfSameSuit:"+numberOfSameSuit+" should be 5 when only one Suit found in counts for suit:"+suit);
+//                }
 
             }
 
@@ -83,7 +86,8 @@ public class SuitAnalyser {
         }
     }
 
-    public Map<Suit, Integer> getCountsPerSuit() {
+    protected Map<Suit, Integer> getCountsPerSuit() {
         return countsPerSuit;
     }
+
 }
