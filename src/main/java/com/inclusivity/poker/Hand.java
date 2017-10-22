@@ -107,6 +107,13 @@ public class Hand {
 
     }
 
+    /**
+     * This would be private, only for use by getBestHand
+     * But it is used extensively by the various unit tests so needs to be public currently
+     *
+     * @param cards A String desription of the card
+     * @return a List<Card>
+     */
     public static List<Card> getListOfCards(String cards) {
 
         String[] cardSymbols = cards.split(",");
