@@ -73,6 +73,26 @@ public class RankAnalyser {
     public boolean hasTwoPairs() {
     //7. Two pair is a poker hand containing two cards of the same rank, two
     //    cards of another rank and one card of a third rank
+        if (countsPerRank.keySet().size() == 3) {
+
+            //If one of these ranks found has 2 and then another has 2 of the same, return true
+            for (Rank rank: countsPerRank.keySet()) {
+                int numberOfSameRank = countsPerRank.get(rank);
+                if (numberOfSameRank == 2) {
+
+                    //I suppose I should be using recursion here
+                    for (Rank secondRank: countsPerRank.keySet()) {
+                        int numberOfSecondRank = countsPerRank.get(secondRank);
+                        if (numberOfSecondRank == 2) {
+                            return true;
+                        }
+                    }
+
+                }
+            }
+
+        }
+
         return false;
 
     }
@@ -80,7 +100,21 @@ public class RankAnalyser {
     public boolean hasTripsOnly() {
     //6. Three of a kind, also known as trips or a set, is a poker hand
     //    containing three cards of the same rank and two cards of two other ranks
+
+        if (countsPerRank.keySet().size() > 2) {
+
+            //If one of these ranks found has 3 of the same then return true
+            for (Rank rank: countsPerRank.keySet()) {
+                int numberOfSameRank = countsPerRank.get(rank);
+                if (numberOfSameRank == 3) {
+                    return true;
+                }
+            }
+
+        }
+
         return false;
+
 
     }
 

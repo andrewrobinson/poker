@@ -15,6 +15,56 @@ import static org.junit.Assert.assertTrue;
 public class TestRankAnalyser {
 
     @Test
+    public void testHasTwoPairs() {
+
+        //The example from https://en.wikipedia.org/wiki/List_of_poker_hands
+        List<Card> listOfCards = Hand.getListOfCards("JH, JS, 3C, 3S, 2H");
+        RankAnalyser rankAnalyser = new RankAnalyser(listOfCards);
+        assertTrue(rankAnalyser.hasTwoPairs());
+
+        //Trips and a pair
+        listOfCards = Hand.getListOfCards("3S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasTwoPairs());
+
+        //Two pairs
+        listOfCards = Hand.getListOfCards("AS, 10C, 10H, 3D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertTrue(rankAnalyser.hasTwoPairs());
+
+        //Four of a kind
+        listOfCards = Hand.getListOfCards("10S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasTwoPairs());
+
+    }
+
+    @Test
+    public void testHasTripsOnly() {
+
+        //The example from https://en.wikipedia.org/wiki/List_of_poker_hands
+        List<Card> listOfCards = Hand.getListOfCards("QC, QS, QH, 9H, 2S");
+        RankAnalyser rankAnalyser = new RankAnalyser(listOfCards);
+        assertTrue(rankAnalyser.hasTripsOnly());
+
+        //Trips and a pair
+        listOfCards = Hand.getListOfCards("3S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasTripsOnly());
+
+        //Two pairs
+        listOfCards = Hand.getListOfCards("AS, 10C, 10H, 3D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasTripsOnly());
+
+        //Four of a kind
+        listOfCards = Hand.getListOfCards("10S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasTripsOnly());
+
+    }
+
+    @Test
     public void testHasTripsAndAPair() {
 
         //Three Tens and two Threes
