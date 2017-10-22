@@ -15,6 +15,31 @@ import static org.junit.Assert.assertTrue;
 public class TestRankAnalyser {
 
     @Test
+    public void testHasOnePairOnly() {
+
+        //The example from https://en.wikipedia.org/wiki/List_of_poker_hands
+        List<Card> listOfCards = Hand.getListOfCards("10S, 10H, 8S, 7H, 4C");
+        RankAnalyser rankAnalyser = new RankAnalyser(listOfCards);
+        assertTrue(rankAnalyser.hasOnePairOnly());
+
+        //Trips and a pair
+        listOfCards = Hand.getListOfCards("3S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasOnePairOnly());
+
+        //Two pairs
+        listOfCards = Hand.getListOfCards("AS, 10C, 10H, 3D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasOnePairOnly());
+
+        //Four of a kind
+        listOfCards = Hand.getListOfCards("10S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasOnePairOnly());
+
+    }
+
+    @Test
     public void testHasTwoPairs() {
 
         //The example from https://en.wikipedia.org/wiki/List_of_poker_hands

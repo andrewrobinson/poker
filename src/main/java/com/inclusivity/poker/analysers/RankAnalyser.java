@@ -9,23 +9,23 @@ import java.util.Map;
 
 /**
  * This class analyses a hand in terms of matching rank
- * It has state and can tell you things like:
+ * It has state and knows things like:
  *
  * We have 2 TENS and two THREES
+ *
+ * hasTwoPairs() would be true in this case
  *
  */
 public class RankAnalyser {
 
     List<Card> listOfCards;
 
-    //e.g. We have
     Map<Rank, Integer> countsPerRank = new HashMap<>();
 
-
     public RankAnalyser(List<Card> listOfCards) {
+
         this.listOfCards = listOfCards;
         buildUpRankCountsPerRank(listOfCards);
-
 
     }
 
@@ -66,6 +66,18 @@ public class RankAnalyser {
     public boolean hasOnePairOnly() {
     //8. One pair, or simply a pair, is a poker hand containing two cards of
     //    the same rank and three cards of three other ranks
+        if (countsPerRank.keySet().size() == 4) {
+
+            //If one of these ranks found has 2 then return true
+            for (Rank rank: countsPerRank.keySet()) {
+                int numberOfSameRank = countsPerRank.get(rank);
+                if (numberOfSameRank == 2) {
+                    return true;
+                }
+            }
+
+        }
+
         return false;
 
     }
@@ -114,7 +126,6 @@ public class RankAnalyser {
         }
 
         return false;
-
 
     }
 
@@ -214,8 +225,6 @@ public class RankAnalyser {
         return false;
 
     }
-
-
 
     private void buildUpRankCountsPerRank(List<Card> listOfCards) {
         //We build up a list of counts per Rank
