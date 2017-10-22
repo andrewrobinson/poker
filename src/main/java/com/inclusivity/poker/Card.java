@@ -4,24 +4,21 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
  * A Card has Rank and Suit
- *
+ * <p>
  * It can be built from shortCodes such as "AS, 10C, 10H, 3D, 3S", using buildFromShortCode
- *
+ * <p>
  * Internally, this uses buildFromRankCodeAndSuitCode and a shortCode of "10C"
  * becomes rankCode of "10" and suitCode of "C"
- *
  */
 public class Card {
-
-    private Rank rank;
-    private Suit suit;
 
     //This looks for a number or A, J, Q or K as the first group (the rank)
     //Then it looks for (S or C or H or D) as the second group (the suit)
     private final static String regex = "(\\d+|A|J|Q|K)([SCHD])$";
     private final static Pattern pattern = Pattern.compile(regex);
+    private Rank rank;
+    private Suit suit;
 
     public Card(Rank rank, Suit suit) {
         this.rank = rank;
