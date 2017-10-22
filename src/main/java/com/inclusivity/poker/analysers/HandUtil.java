@@ -1,4 +1,7 @@
-package com.inclusivity.poker;
+package com.inclusivity.poker.analysers;
+
+import com.inclusivity.poker.Card;
+import com.inclusivity.poker.Rank;
 
 import java.util.HashMap;
 import java.util.List;

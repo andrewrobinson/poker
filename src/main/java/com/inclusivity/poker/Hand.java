@@ -71,7 +71,7 @@ public class Hand {
         return "Two Pair";
     }
 
-    protected static List<Card> getListOfCards(String cards) {
+    public static List<Card> getListOfCards(String cards) {
 
         String[] cardSymbols = cards.split(",");
         if (cardSymbols.length != 5) {

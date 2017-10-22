@@ -1,8 +1,7 @@
-package com.inclusivity.poker;
+package com.inclusivity.poker.analysers;
 
+import com.inclusivity.poker.Hand;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,8 +9,6 @@ public class TestHandUtil {
 
     @Test
     public void testRankMatchingCount() {
-
-//        TODO - what if we have 2 matching in one rank and 3 matching in another rank?
 
         //We have two 10s and two 3s
         assertEquals(2, HandUtil.rankMatchingCount(Hand.getListOfCards("AS, 10C, 10H, 3D, 3S")));
