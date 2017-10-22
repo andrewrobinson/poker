@@ -84,24 +84,86 @@ public class RankAnalyser {
 
     }
 
+    /**
+     * Check if we have three of a kind AND two of a kind
+     *
+     * @return boolean if we have three of a kind AND two of a kind
+     */
     public boolean hasTripsAndAPair() {
-//3. A full house, also known as a full boat or tight[citation needed]
-//            (and originally called a full hand), is a poker hand containing three
-//    cards of one rank and two cards of another rank
-        return false;
 
+        //3. A full house, also known as a full boat or tight[citation needed]
+        // (and originally called a full hand), is a poker hand containing three
+        //  cards of one rank and two cards of another rank
+
+        if (countsPerRank.keySet().size() == 2) {
+
+            //If one of these two ranks found has 3 of the same
+            // and the other has 2 of the same then return true
+            for (Rank rank: countsPerRank.keySet()) {
+                int numberOfSameRank = countsPerRank.get(rank);
+                if (numberOfSameRank == 3) {
+
+                    //I suppose I should be using recursion here
+                    for (Rank secondRank: countsPerRank.keySet()) {
+                        int numberOfSecondRank = countsPerRank.get(secondRank);
+                        if (numberOfSecondRank == 2) {
+                            return true;
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+        return false;
     }
 
+    /**
+     * Check if we have four of a kind (4 cards with the same Rank)
+     *
+     * @return boolean if we have four of a kind
+     */
     public boolean hasFourOfAKind() {
+
     //2. Four of a kind, also known as quads, is a poker hand containing
     //four cards of the same rank and one card of another rank
+
+        if (countsPerRank.keySet().size() == 2) {
+
+            //If one of these two ranks found has 4 of the same, return true
+            for (Rank rank: countsPerRank.keySet()) {
+                int numberOfSameRank = countsPerRank.get(rank);
+                if (numberOfSameRank == 4) {
+                    return true;
+                }
+            }
+
+        }
+
         return false;
 
     }
 
+    /**
+     * Checks if we have five of a kind (5 cards with the same Rank)
+     *
+     * @return boolean if we have five of a kind
+     */
     public boolean hasFiveOfAKind() {
-    //0. Five of a kind(Royal Flush) is a poker hand containing five cards
-    //    of the same rank,
+
+        //0. Five of a kind(Royal Flush) is a poker hand containing five cards of the same rank
+        //Since there are only 4 of the same rank in a standard deck, you need a wildcard to simulate this
+
+        if (countsPerRank.keySet().size() == 1) {
+
+            for (Rank rank: countsPerRank.keySet()) {
+                int numberOfSameRank = countsPerRank.get(rank);
+                return (numberOfSameRank == 5);
+            }
+
+        }
+
         return false;
 
     }
