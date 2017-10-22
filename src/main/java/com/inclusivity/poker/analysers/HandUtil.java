@@ -48,27 +48,4 @@ public class HandUtil {
         return rankMatchingCount;
     }
 
-    /**
-     * This lets you know if there are any matching suits in the list of cards
-     *
-     * @param listOfCards
-     * @return
-     */
-    public static int suitMatchingCount(List<Card> listOfCards) {
-
-        return 0;
-    }
-
-    /**
-     * This lets you know if there are any sequential ranks in the list of cards
-     *
-     * @param listOfCards
-     * @return the number of sequential ranks in the list of cards
-     */
-    public static int sequentialRankCount(List<Card> listOfCards) {
-
-        return 0;
-    }
-
-
 }
