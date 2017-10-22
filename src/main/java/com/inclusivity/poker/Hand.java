@@ -1,5 +1,8 @@
 package com.inclusivity.poker;
 
+import com.inclusivity.poker.analysers.RankAnalyser;
+import com.inclusivity.poker.analysers.SuitAnalyser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,17 @@ import java.util.List;
  * NB - I have not ensured that the list of cards does not contain duplicates not possible in a normal pack
  */
 public class Hand {
+
+    public static final String FIVE_OF_A_KIND = "Five of a kind";
+    public static final String STRAIGHT_FLUSH = "Straight flush";
+    public static final String FLUSH = "Flush";
+    public static final String FOUR_OF_A_KIND = "Four of a kind";
+    public static final String FULL_HOUSE = "Full house";
+    public static final String STRAIGHT = "Straight";
+    public static final String THREE_OF_A_KIND = "Three of a kind";
+    public static final String TWO_PAIR = "Two Pair";
+    public static final String ONE_PAIR = "One Pair";
+    public static final String HIGH_CARD = "High card";
 
     public static String getBestHand(String cards) {
 
@@ -22,49 +36,75 @@ public class Hand {
 
     }
 
-
     private static String getBestHandFromListOfCards(List<Card> listOfCards) {
 
+        RankAnalyser rankAnalyser = new RankAnalyser(listOfCards);
 
-//        Unique fns:
-//
-//
-//        a) rank_matching_count (5 or 4 or 3 or 2 are of interest and
-//                sometimes all cards supplied and sometimes 3 or 2 of the  remaining
-//                cards)
-//
-//        5 for all cards (has_five_of_a_kind)
-//                4 for all cards (has_four_of_a_kind)
-//                3 for all cards (has_trips)
-//                2 for all cards (has_pair)
-//                2 for remaining 2 cards (part of has_full_house, also needs has_trips)
-//        2 for remaining 3 cards (has_another_pair)
-//
-//
-//        b) suit_matching_count (5 is of interest for all cards only)
-//        part of requirements for has_straight_flush
-//
-//
-//        c) sequential_rank_count(5 is of interest for all cards only)
-//        part of requirements for has_straight_flush
-//
-//        Derived fns:
-//
-//
-//        has_five_of_a_kind = rank_matching_count(all_cards) == 5
-//        has_straight_flush = (sequential_rank_count(all_cards) ==5) AND
-//                (suit_matching_count(all_cards) ==5)
-//        has_four_of_a_kind = (rank_matching_count(all_cards) == 4)
-//        has_full_house = has_trips AND rank_matching_count(remaining_two_cards) == 2)
-//        has_flush = (suit_matching_count(all_cards) ==5)
-//        has_straight = (sequential_rank_count(all_cards) ==5) AND !
-//                (suit_matching_count(all_cards) ==5)
-//        has_trips = (rank_matching_count(all_cards) == 3)
-//        has_another_pair = (rank_matching_count(3_remaining_cards) == 2)
-//        has_pair = (rank_matching_count(all_cards) == 2)
+        if (rankAnalyser.hasFiveOfAKind()) {
+            //0 Five of a kind(Royal Flush) is a poker hand containing five cards of the same rank,
+            return FIVE_OF_A_KIND;
+        }
 
+        SuitAnalyser suitAnalyser = new SuitAnalyser(listOfCards);
 
-        return "Two Pair";
+        if (suitAnalyser.hasAllCardsOfTheSameSuit()) {
+
+            if (rankAnalyser.hasFiveCardsOfSequentialRank()) {
+                // 1. A straight flush is a poker hand containing five cards of
+                // sequential rank, all of the same suit,
+                return STRAIGHT_FLUSH;
+            } else {
+                // 4. A flush is a poker hand containing five cards all of the same suit,
+                // not all of sequential rank,
+                return FLUSH;
+            }
+
+        } else {
+
+            if (rankAnalyser.hasFourOfAKind()) {
+                // 2. Four of a kind, also known as quads, is a poker hand containing
+                // four cards of the same rank and one card of another rank
+                return FOUR_OF_A_KIND;
+            }
+
+            if (rankAnalyser.hasTripsAndAPair()) {
+                // 3. A full house is a poker hand containing three
+                // cards of one rank and two cards of another rank
+                return FULL_HOUSE;
+            }
+
+            if (rankAnalyser.hasFiveCardsOfSequentialRank()) {
+                // 5. A straight is a poker hand containing five cards of sequential
+                // rank, not all of the same suit,
+                return STRAIGHT;
+            }
+
+            if (rankAnalyser.hasTripsOnly()) {
+                // 6. Three of a kind, also known as trips or a set, is a poker hand
+                // containing three cards of the same rank and two cards of two other ranks
+                return THREE_OF_A_KIND;
+            }
+
+            if (rankAnalyser.hasTwoPairs()) {
+                // 7. Two pair is a poker hand containing two cards of the same rank, two
+                // cards of another rank and one card of a third rank
+                return TWO_PAIR;
+
+            }
+
+            if (rankAnalyser.hasOnePairOnly()) {
+                // 8. One pair, or simply a pair, is a poker hand containing two cards of
+                // the same rank and three cards of three other ranks
+                return ONE_PAIR;
+            }
+
+            // 9. High card, also known as no pair or simply nothing, is a poker hand
+            // containing five cards not all of sequential rank or of the same suit,
+            // and none of which are of the same rank.
+            return HIGH_CARD;
+
+        }
+
     }
 
     public static List<Card> getListOfCards(String cards) {
