@@ -2,7 +2,6 @@ package com.inclusivity.poker.analysers;
 
 import com.inclusivity.poker.Card;
 import com.inclusivity.poker.Hand;
-import com.inclusivity.poker.Rank;
 import com.inclusivity.poker.Suit;
 import org.junit.Test;
 
@@ -75,7 +74,7 @@ public class TestSuitAnalyser {
         assertEquals(3, (int) countsPerSuit.get(Suit.SPADES));
         assertEquals(1, (int) countsPerSuit.get(Suit.CLUBS));
         assertEquals(1, (int) countsPerSuit.get(Suit.HEARTS));
-        assertEquals(null,  countsPerSuit.get(Suit.DIAMONDS));
+        assertEquals(null, countsPerSuit.get(Suit.DIAMONDS));
 
     }
 }

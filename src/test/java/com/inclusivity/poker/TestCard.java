@@ -3,7 +3,6 @@ package com.inclusivity.poker;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class TestCard {

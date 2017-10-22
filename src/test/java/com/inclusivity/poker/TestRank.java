@@ -29,6 +29,5 @@ public class TestRank {
         assertEquals(null, Rank.fromShortCode("something"));
 
 
-
     }
 }

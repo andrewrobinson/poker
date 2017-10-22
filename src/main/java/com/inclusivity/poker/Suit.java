@@ -1,5 +1,8 @@
 package com.inclusivity.poker;
 
+/**
+ * An enum for card Suits, with a method to build them from a shortCode
+ */
 public enum Suit {
 
     HEARTS("H"), DIAMONDS("D"), CLUBS("C"), SPADES("S");

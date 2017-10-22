@@ -151,7 +151,34 @@ public class TestRankAnalyser {
 
     }
 
+
     @Test
+    public void testHasFiveCardsOfSequentialRank() {
+
+        //The Straight flush example from https://en.wikipedia.org/wiki/List_of_poker_hands
+        List<Card> listOfCards = Hand.getListOfCards("JC, 10C, 9C, 8C, 7C");
+        RankAnalyser rankAnalyser = new RankAnalyser(listOfCards);
+        assertTrue(rankAnalyser.hasFiveCardsOfSequentialRank());
+
+        //The Straight example from https://en.wikipedia.org/wiki/List_of_poker_hands
+        listOfCards = Hand.getListOfCards("10D, 9S, 8H, 7D, 6C");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertTrue(rankAnalyser.hasFiveCardsOfSequentialRank());
+
+        //Trips and a pair
+        listOfCards = Hand.getListOfCards("3S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasFiveCardsOfSequentialRank());
+
+        //Four of a kind
+        listOfCards = Hand.getListOfCards("10S, 10C, 10H, 10D, 3S");
+        rankAnalyser = new RankAnalyser(listOfCards);
+        assertFalse(rankAnalyser.hasFiveCardsOfSequentialRank());
+
+    }
+
+    @Test
+    //All the others ones in Rank Analyser rely on this method
     public void testGetCountsPerRank() {
 
         List<Card> listOfCards = Hand.getListOfCards("AS, 10C, 10H, 3D, 3S");

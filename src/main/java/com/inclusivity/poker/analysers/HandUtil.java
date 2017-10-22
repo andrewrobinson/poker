@@ -16,7 +16,6 @@ public class HandUtil {
      * This lets you know if there are any cards with matching rank in the list
      *
      * @param listOfCards
-     *
      * @return the number of ranks where more than one instance of that rank is found in the list of cards
      */
     public static int rankMatchingCount(List<Card> listOfCards) {
@@ -26,10 +25,10 @@ public class HandUtil {
         Map<Rank, Integer> rankCounts = new HashMap<>();
 
         //We build up a list of counts per Rank
-        for (Card card: listOfCards) {
+        for (Card card : listOfCards) {
             if (rankCounts.containsKey(card.getRank())) {
                 Integer currentCount = rankCounts.get(card.getRank());
-                rankCounts.put(card.getRank(), currentCount+1);
+                rankCounts.put(card.getRank(), currentCount + 1);
             } else {
                 rankCounts.put(card.getRank(), 1);
             }
@@ -39,7 +38,7 @@ public class HandUtil {
         Set<Rank> ranksFound = rankCounts.keySet();
 
         //For any Rank that has a count more than one, we increment our counter
-        for (Rank rank: ranksFound) {
+        for (Rank rank : ranksFound) {
             if (rankCounts.get(rank) > 1) {
                 rankMatchingCount += 1;
             }
@@ -51,7 +50,6 @@ public class HandUtil {
 
     /**
      * This lets you know if there are any matching suits in the list of cards
-     *
      *
      * @param listOfCards
      * @return
@@ -71,7 +69,6 @@ public class HandUtil {
 
         return 0;
     }
-
 
 
 }

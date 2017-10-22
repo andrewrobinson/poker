@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * Given a list of cards described by symbols in a comma-separated string, identify the best poker hand in it
- *
+ * <p>
  * NB - I have not ensured that the list of cards does not contain duplicates not possible in a normal pack
- *
- *
  */
 public class Hand {
 
@@ -67,7 +64,6 @@ public class Hand {
 //        has_pair = (rank_matching_count(all_cards) == 2)
 
 
-
         return "Two Pair";
     }
 
@@ -80,7 +76,7 @@ public class Hand {
 
         List<Card> listOfCards = new ArrayList<>();
 
-        for (String cardSymbol:cardSymbols) {
+        for (String cardSymbol : cardSymbols) {
             listOfCards.add(Card.buildFromShortCode(cardSymbol));
 
         }

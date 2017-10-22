@@ -10,9 +10,8 @@ import java.util.Map;
 /**
  * This class analyses a hand in terms of matching suit
  * It has state and can tell you things like:
- *
+ * <p>
  * We have 2 diamonds, 1 heart, 3 spades and 0 clubs
- *
  */
 public class SuitAnalyser {
 
@@ -30,7 +29,6 @@ public class SuitAnalyser {
     }
 
     /**
-     *
      * With 4 suits and 5 cards, there will always be at least 2 cards of the same suit
      * This checks for the case where all cards are of the same suit
      * Our counts per suit should have one key(only one suit), and the count for that suit should be 5
@@ -49,10 +47,10 @@ public class SuitAnalyser {
 
         if (countsPerSuit.keySet().size() == 1) {
 
-            for (Suit suit: countsPerSuit.keySet()) {
+            for (Suit suit : countsPerSuit.keySet()) {
                 int numberOfSameSuit = countsPerSuit.get(suit);
 
-                assert(numberOfSameSuit == 5);
+                assert (numberOfSameSuit == 5);
                 return true;
 
                 //or if not using assert
@@ -75,10 +73,10 @@ public class SuitAnalyser {
 
     private void buildUpSuitCountsPerSuit(List<Card> listOfCards) {
         //We build up a list of counts per Suit
-        for (Card card: listOfCards) {
+        for (Card card : listOfCards) {
             if (countsPerSuit.containsKey(card.getSuit())) {
                 Integer currentCount = countsPerSuit.get(card.getSuit());
-                countsPerSuit.put(card.getSuit(), currentCount+1);
+                countsPerSuit.put(card.getSuit(), currentCount + 1);
             } else {
                 countsPerSuit.put(card.getSuit(), 1);
             }
