@@ -1,8 +1,8 @@
-package com.inclusivity.poker.analysers;
+package com.andrew.poker.analysers;
 
-import com.inclusivity.poker.Card;
-import com.inclusivity.poker.Hand;
-import com.inclusivity.poker.Rank;
+import com.andrew.poker.Card;
+import com.andrew.poker.Hand;
+import com.andrew.poker.Rank;
 import org.junit.Test;
 
 import java.util.List;

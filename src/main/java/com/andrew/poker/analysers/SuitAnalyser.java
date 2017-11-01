@@ -1,7 +1,7 @@
-package com.inclusivity.poker.analysers;
+package com.andrew.poker.analysers;
 
-import com.inclusivity.poker.Card;
-import com.inclusivity.poker.Suit;
+import com.andrew.poker.Card;
+import com.andrew.poker.Suit;
 
 import java.util.HashMap;
 import java.util.List;

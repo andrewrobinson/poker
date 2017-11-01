@@ -1,4 +1,4 @@
-package com.inclusivity.poker;
+package com.andrew.poker;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

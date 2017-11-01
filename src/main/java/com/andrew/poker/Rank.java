@@ -1,4 +1,4 @@
-package com.inclusivity.poker;
+package com.andrew.poker;
 
 /**
  * An enum for card rank and an integer value for sort order /

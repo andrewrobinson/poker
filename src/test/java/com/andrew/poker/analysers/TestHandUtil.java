@@ -1,6 +1,6 @@
-package com.inclusivity.poker.analysers;
+package com.andrew.poker.analysers;
 
-import com.inclusivity.poker.Hand;
+import com.andrew.poker.Hand;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

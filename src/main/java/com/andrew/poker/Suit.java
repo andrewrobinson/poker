@@ -1,4 +1,4 @@
-package com.inclusivity.poker;
+package com.andrew.poker;
 
 /**
  * An enum for card Suits, with a method to build them from a shortCode

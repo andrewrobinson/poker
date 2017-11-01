@@ -1,7 +1,7 @@
-package com.inclusivity.poker;
+package com.andrew.poker;
 
-import com.inclusivity.poker.analysers.RankAnalyser;
-import com.inclusivity.poker.analysers.SuitAnalyser;
+import com.andrew.poker.analysers.RankAnalyser;
+import com.andrew.poker.analysers.SuitAnalyser;
 
 import java.util.ArrayList;
 import java.util.List;

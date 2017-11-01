@@ -1,10 +1,10 @@
-package com.inclusivity.poker;
+package com.andrew.poker;
 
 import org.junit.Test;
 
 import java.util.List;
 
-import static com.inclusivity.poker.Hand.*;
+import static com.andrew.poker.Hand.*;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 

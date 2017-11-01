@@ -1,6 +1,6 @@
 
 
-Inclusivity coding assignment - Andrew Robinson
+Poker coding assignment - Andrew Robinson
 ===============================================
 
 For example, given a string input of:
