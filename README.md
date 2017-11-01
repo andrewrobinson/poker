@@ -8,6 +8,11 @@ For example, given a string input of:
 (the cards above are ace of spades, 10 of clubs, 10 of hearts, 3 of diamonds and 3 of spades)
 Output would be: 'Two Pair'
 
+To run
+-------
+
+Run TestHand#testGetBestHand
+
 
 Taken from https://en.wikipedia.org/wiki/List_of_poker_hand_categories
 ----------------------------------------------------------------------
